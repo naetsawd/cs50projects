@@ -1,0 +1,38 @@
+<!--Advanced Search-->  
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Google Advanced Search</title>
+        <link rel="shortcut icon" href="images/titleicon.svg">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <!--Navigation Link, Menu and Sign in-->  
+        <div id="links">
+            <a href="index.html">Google Search</a>
+            <a href="#" id="menu"><img src="images/menu.png" height="30px" width="30px"></a>
+            <a href="#" id="signin">Sign in</a>
+        </div>
+
+        <!--Logo--> 
+        <img src="images/logo.svg" id="glogoadv">
+
+        <!--Description texts--> 
+        <div id="advwords">Advanced Search</div>
+        <div id="find">Find pages with...</div>
+        <h5>all these words:</h5>
+        <h5>this exact word or phrase:</h5>
+        <h5>any of these words:</h5>
+        <h5>none of these words:</h5>
+
+        <!--Query Bars & Advanced Search Button-->
+        <form id="advform" action="https://google.com/search">
+            <input type="text" name="as_q" class="qryboxadv"><br/>
+            <input type="text" name="as_epq" class="qryboxadv"><br/>
+            <input type="text" name="as_oq" class="qryboxadv"><br/>
+            <input type="text" name="as_eq" class="qryboxadv"><br/>
+            <input type="submit" value="Advanced Search" id="advsearchbtn">
+        </form>
+    </body>
+</html>
