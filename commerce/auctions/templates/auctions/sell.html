@@ -1,0 +1,16 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<div style="margin: 10px;">
+<h2>Sell an Item</h2>
+
+<table>
+<form action="" method="POST">
+	{% csrf_token %}
+	{{ form }}
+</table>
+<br>
+<input class="btn btn-secondary" type="submit" value="Create Listing">
+</form>
+</div>
+{% endblock %}

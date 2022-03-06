@@ -1,0 +1,62 @@
+body {
+    padding: 10px;
+}
+
+h2 {
+    text-decoration: underline;
+    margin-bottom: 10px;
+  }
+
+#grid {
+    display:flex;
+    justify-content: center;
+    grid-template-columns: auto auto auto;
+    flex-wrap: wrap;
+    grid-row-gap: 25px;
+    grid-column-gap: 15px;
+    flex-wrap: wrap;
+}
+
+#grid > div  {
+    border: 5px solid #80cbc4;
+    border-radius: 25px 50px;
+    padding: 15px;
+    font-size: 20px;
+    text-align: center;
+    width: 600px;
+  }
+
+#title {
+    color:black;
+}
+
+#title:hover {
+    color:blue;
+}
+
+#logo {
+    background-color: #80cbc4;
+    color: white;
+    border-radius: 25px;
+    padding: 15px;
+    text-align: center;
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#id_body {
+    width: 500px;
+    height: 40px;
+}
+
+#id_title {
+    width: 500px;
+}
+
+#image {
+    border-radius: 10px 25px;
+    height: 200px;
+    width: auto;
+
+}

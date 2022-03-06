@@ -1,0 +1,30 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<div style="margin: 10px;">
+<h2>Your Watchlist</h2>
+<div id="grid">
+    {% for listing in watchlist %}
+    <div>
+        <h4><a href="/{{ listing.id }}" id="title">{{ listing.title }}</a></h4>
+        <a href="/{{ listing.id }}"><img src="{{ listing.image }}" id="image"></a>
+        <li>
+            {% if listing.active %}
+                Current Bid: ${{ listing.price }}
+            {% else %}
+                Winning Bid: ${{ listing.price }}
+            {% endif %}
+        </li>
+        <li>Category: {{ listing.category }}</li>
+        <font size="2">
+            {% if listing.active %}
+                Active
+            {% else %}
+                Closed
+            {% endif %}
+        </font>
+    </div>
+    {% endfor %}
+</div>
+</div>
+{% endblock %}

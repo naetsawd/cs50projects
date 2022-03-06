@@ -1,0 +1,86 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<div style="margin: 10px;">
+    <h2>{{ listing.title }}</h2>
+    <strong>Seller:</strong> {{ listing.user }}
+    <br>
+    {% if not active %}
+        This lisiting is closed.
+    {% endif %}
+    {% if winner %} You were the highest bidder! {% endif %}
+    <div id="grid" style="margin-top: 10px;">
+    <div>
+        <img src="{{ listing.image }}" id="image">
+        <li>Current Bid: ${{ listing.price }}</li>
+        <li>Category: {{ listing.category }}</li>
+    </div>
+    {% if user.is_authenticated %}
+    {% if active %}
+    {% if not seller %}
+    <div style="text-align: left; width: 250px;">
+        <table>
+        <form action="" method="POST">
+        	{% csrf_token %}
+        	<label>Bid more than ${{ listing.price }}:</label><br>
+            <input type="number" min={{ minbid }} name="bid" class="form-control" style="width: 150px;">
+            <input class="btn btn-secondary" type="submit" value="Place Bid" name="btnform1" style="margin-top: 10px;">
+            <br>
+        {% if watching == False %}
+            <input class="btn btn-secondary" type="submit" name="btnform2" value="Add to Watchlist" style="margin-top: 10px;">
+            {% else %}
+            <input class="btn btn-secondary" type="submit" name="btnform3" value="Remove from Watchlist" style="margin-top: 10px;">
+        {% endif %}
+        </form>
+        </table>
+    </div>
+    {% endif %}
+    {% endif %}
+    {% endif %}
+    <div style="text-align: left; overflow: auto; height: 300px;">
+        <strong style="font-size: 25px">Description:</strong>
+        <hr style="width: 50%; text-align: left; margin-left: 0; background-color: #ddd">
+        {{ listing.desc }}
+    </div>
+    <div style="text-align: left; width: 60%; overflow: auto; height: 300px;">
+        <strong style="font-size: 25px">Comments:</strong>
+        {% for comment in comments %}
+        <hr style="width: 50%; text-align: left; margin-left: 0; background-color: #ddd">
+        <u style="font-size: 22px">{{ comment.title }}:</u>
+        <br>
+        <font size="2">By: {{ comment.user }}</font>
+        <br>
+        {{ comment.body }}
+        {% empty %}
+        <hr style="width: 50%; text-align: left; margin-left: 0; background-color: #ddd">
+        No comments yet.
+    {% endfor %}
+    <hr style="width: 50%; text-align: left; margin-left: 0; background-color: #ddd">
+    </div>
+    <br>
+    {% if user.is_authenticated %}
+    {% if active %}
+    <div style="text-align: left; overflow: auto">
+    
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form }}
+        <br>
+        <input class="btn btn-secondary" type="submit" name="btnform6" value="Post Comment">
+        </form>
+    </div>
+    </div>
+    {% endif %}
+    <br>
+    <form action="" method="POST">
+    {% csrf_token %}
+    {% if seller %}
+        {% if active %}
+            <input class="btn btn-secondary" type="submit" name="btnform4" value="Close Listing">
+        {% endif %}
+        <input class="btn btn-secondary" type="submit" name="btnform5" value="Remove Listing">
+    {% endif %}
+    </form>
+    {% endif %}
+</div>
+{% endblock %}
